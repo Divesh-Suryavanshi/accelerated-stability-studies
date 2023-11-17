@@ -1,1 +1,25 @@
-/* You CSS goes in here */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-image: url(../images/bg.png);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  /* height: 100svh; */
+}
+
+.experiment-area {
+  margin-top: auto;
+  height: 50vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.chamber {
+  width: 500px;
+}
