@@ -2,11 +2,116 @@
 <html>
   <head>
     <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/beaker.css" />
+    <link rel="stylesheet" href="./css/cylinder.css" />
+    <link rel="stylesheet" href="./css/microwave.css" />
+    <!-- <link rel="stylesheet" href="./css/conical-flask.css" /> -->
   </head>
   <body>
     <div class="experiment-area">
-      <img class="chamber" src="./images/stability-chamber-2.png" alt="" />
+      <!-- <div class="sediment-agent">
+        <img src="./images/pink-powder.png" alt="" />
+        <img src="./images/pink-powder.png" alt="" />
+        <img src="./images/pink-powder.png" alt="" />
+        <img src="./images/pink-powder.png" alt="" />
+
+        <img src="./images/yellow-powder.png" alt="" />
+        <img src="./images/yellow-powder.png" alt="" />
+        <img src="./images/yellow-powder.png" alt="" />
+      </div> -->
+      <div class="measuring-cylinder">
+        <span>
+          <div class="cylinder" id="zero"><div class="sediment"></div></div>
+          <div class="cylinder-stand"></div>
+        </span>
+        <span>
+          <div class="cylinder" id="ten"><div class="sediment"></div></div>
+          <div class="cylinder-stand"></div>
+        </span>
+        <span>
+          <div class="cylinder" id="twenty"><div class="sediment"></div></div>
+          <div class="cylinder-stand"></div>
+        </span>
+        <span>
+          <div class="cylinder" id="thirty"><div class="sediment"></div></div>
+          <div class="cylinder-stand"></div>
+        </span>
+      </div>
+
+      <!-- bottom row -->
+      <div class="beakers">
+        <!-- <div id="conical-flask"><div id="sediment"></div></div> -->
+        <div class="beaker" id="ethanol"><div class="sediment"></div></div>
+        <div class="beaker" id="aspirin"><div class="sediment"></div></div>
+        <div class="beaker" id="nhcl" data-after="NHCL">
+          <div class="sediment"></div>
+        </div>
+        <!-- <img src="./images/conical-flask.png" alt="" />
+        <img src="./images/conical-flask.png" alt="" />
+        <img src="./images/conical-flask.png" alt="" />
+        <img src="./images/conical-flask.png" alt="" /> -->
+      </div>
+      <!-- <div class="mortar-pestle">
+        <img src="./images/mortar.png" class="mortar" alt="" />
+        <img src="./images/pestle.png" class="pestle" alt="" />
+      </div> -->
+
+      <div class="microwave">
+        <div class="store">
+          <div class="window"></div>
+        </div>
+        <div class="controls">
+          <div class="display"></div>
+          <div class="knob"></div>
+          <div class="lights">
+            <div class="red-light"></div>
+            <div class="blue-light"></div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="instruction">
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-title" onclick="toggleAccordion(this)">
+            General Instructions
+          </div>
+          <div class="accordion-content">
+            <ol>
+              <li>Click on sediment itself to place it inside mortar</li>
+              <li>Click on pestle to start grinding sediment</li>
+              <li>
+                Click on water beaker to add some in mortar while grinding
+              </li>
+              <li>
+                Choose an empty beaker in which you want to pours the sediment
+                inside mortar
+              </li>
+              <li>
+                After empty beaker had moved closed to the mortar, click mortar
+                to pour it inside empty beaker
+              </li>
+              <li>
+                Now after this click on any measuring cylinder you want to
+                choose.
+              </li>
+              <li>
+                After measuring cylinder has stoped moving, click on beaker
+                filled with sediment to pour it inside measuring cylinder
+              </li>
+              <li>
+                Now, after measuring cylinder have been filled click on it to
+                move it back to its initial position
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="./js/main.js"></script>
+    <!-- <canvas id="canvas"></canvas>
+    <script src="./js/canvas.js"></script> -->
   </body>
 </html>
