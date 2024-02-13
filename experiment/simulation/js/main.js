@@ -1,3 +1,4 @@
+"use strict";
 //Your JavaScript goes in here
 const nhcl = document.querySelector("#nhcl");
 const microwave = document.querySelector(".microwave");
@@ -221,13 +222,22 @@ nhcl.addEventListener(
                           fill: "forwards",
                         }
                       );
+
+                      // anim.onfinish = function () {
+                      //   // pour 5ml ferric nitrate in each cylinder
+                      // take nhcl + aspirin sample in cylinders
+                      animateCylinder(zero, aspirin, -60);
+                      animateCylinder(ten, aspirin, -70);
+                      animateCylinder(twenty, aspirin, -80);
+                      animateCylinder(thirty, aspirin, -90);
+                      // };
                     };
 
                     // take nhcl + aspirin sample in cylinders
-                    animateCylinder(zero, aspirin, -60);
-                    animateCylinder(ten, aspirin, -70);
-                    animateCylinder(twenty, aspirin, -80);
-                    animateCylinder(thirty, aspirin, -90);
+                    // animateCylinder(zero, aspirin, -60);
+                    // animateCylinder(ten, aspirin, -70);
+                    // animateCylinder(twenty, aspirin, -80);
+                    // animateCylinder(thirty, aspirin, -90);
                   };
 
                   aspirin.childNodes[0].animate(
@@ -398,13 +408,14 @@ function shakeAspirin() {
 
 // animation for cylinders - 0, 10, 20, 30
 function animateCylinder(cylinder, solution, solutionLevel) {
-  const zero = document.querySelector("#zero");
-  const ten = document.querySelector("#ten");
-  const twenty = document.querySelector("#twenty");
-  const thirty = document.querySelector("#thirty");
+  // const zero = document.querySelector("#zero");
+  // const ten = document.querySelector("#ten");
+  // const twenty = document.querySelector("#twenty");
+  // const thirty = document.querySelector("#thirty");
 
   let cylinderCords = cylinder.getBoundingClientRect();
   let solutionCords = solution.getBoundingClientRect();
+  let nhclCords = nhcl.getBoundingClientRect();
 
   cylinder.addEventListener(
     "click",
@@ -473,7 +484,80 @@ function animateCylinder(cylinder, solution, solutionLevel) {
           duration: 1000,
           fill: "forwards",
         }
-      );
+      ).onfinish = function () {
+        // ferric nitrate
+        cylinder.addEventListener(
+          "click",
+          function () {
+            nhcl.animate(
+              [
+                {},
+                {
+                  transform: `translate( ${
+                    cylinderCords.right - nhclCords.left
+                  }px, ${
+                    cylinderCords.top - nhclCords.top - nhclCords.height
+                  }px)`,
+                },
+                {
+                  transform: `translate( ${
+                    cylinderCords.right - nhclCords.left
+                  }px, ${
+                    cylinderCords.top - nhclCords.top - nhclCords.height
+                  }px) rotate(-45deg)`,
+                },
+                {
+                  transform: `translate( ${
+                    cylinderCords.right - nhclCords.left
+                  }px, ${
+                    cylinderCords.top - nhclCords.top - nhclCords.height
+                  }px) rotate(-45deg)`,
+                },
+                {
+                  transform: `translate( ${
+                    cylinderCords.right - nhclCords.left
+                  }px, ${
+                    cylinderCords.top - nhclCords.top - nhclCords.height
+                  }px)`,
+                },
+                {},
+              ],
+              {
+                duration: 2000,
+                iterations: 1,
+              }
+            );
+
+            nhcl.childNodes[1].animate(
+              [
+                {},
+                {
+                  bottom: `${solutionLevel - 10}px`,
+                },
+              ],
+              {
+                duration: 1000,
+                fill: "forwards",
+              }
+            );
+
+            // fill cylinders
+            cylinder.childNodes[0].animate(
+              [
+                {},
+                {
+                  bottom: "-130px",
+                },
+              ],
+              {
+                duration: 1000,
+                fill: "forwards",
+              }
+            );
+          },
+          { once: true }
+        );
+      };
     },
     { once: true }
   );
