@@ -41,6 +41,13 @@ nhcl.addEventListener(
     );
 
     anim.onfinish = function () {
+      // show 50° C on microwave display when nhcl is place inside it
+      const microwaveDisplay = document.querySelector(".microwave .display");
+
+      microwaveDisplay.style.color = "green";
+      microwaveDisplay.style.textAlign = "center";
+      microwaveDisplay.textContent = "50° C";
+
       nhcl.addEventListener(
         "click",
         function () {
@@ -50,6 +57,9 @@ nhcl.addEventListener(
 
           if (count == "20%") count = "100%";
           else count = "20%";
+
+          // switch off microwave display
+          microwaveDisplay.textContent = "";
 
           let anim = nhcl.animate(
             [
