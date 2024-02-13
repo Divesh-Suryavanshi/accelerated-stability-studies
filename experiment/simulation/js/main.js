@@ -223,101 +223,11 @@ nhcl.addEventListener(
                       );
                     };
 
-                    // take sample in cylinders
-
-                    const zero = document.querySelector("#zero");
-                    const ten = document.querySelector("#ten");
-                    const twenty = document.querySelector("#twenty");
-                    const thirty = document.querySelector("#thirty");
-
-                    function animateCylinder(cylinder, aspirinLevel) {
-                      let cylinderCords = cylinder.getBoundingClientRect();
-
-                      cylinder.addEventListener(
-                        "click",
-                        function () {
-                          aspirin.animate(
-                            [
-                              {},
-                              {
-                                transform: `translate( ${
-                                  cylinderCords.right - aspirinCords.left
-                                }px, ${
-                                  cylinderCords.top -
-                                  aspirinCords.top -
-                                  aspirinCords.height
-                                }px)`,
-                              },
-                              {
-                                transform: `translate( ${
-                                  cylinderCords.right - aspirinCords.left
-                                }px, ${
-                                  cylinderCords.top -
-                                  aspirinCords.top -
-                                  aspirinCords.height
-                                }px) rotate(-45deg)`,
-                              },
-                              {
-                                transform: `translate( ${
-                                  cylinderCords.right - aspirinCords.left
-                                }px, ${
-                                  cylinderCords.top -
-                                  aspirinCords.top -
-                                  aspirinCords.height
-                                }px) rotate(-45deg)`,
-                              },
-                              {
-                                transform: `translate( ${
-                                  cylinderCords.right - aspirinCords.left
-                                }px, ${
-                                  cylinderCords.top -
-                                  aspirinCords.top -
-                                  aspirinCords.height
-                                }px)`,
-                              },
-                              {},
-                            ],
-                            {
-                              duration: 2000,
-                              iterations: 1,
-                            }
-                          );
-
-                          aspirin.childNodes[0].animate(
-                            [
-                              {},
-                              {
-                                bottom: `${aspirinLevel}px`,
-                              },
-                            ],
-                            {
-                              duration: 1000,
-                              fill: "forwards",
-                            }
-                          );
-
-                          // fill cylinders
-                          cylinder.childNodes[0].animate(
-                            [
-                              {},
-                              {
-                                bottom: "-150px",
-                              },
-                            ],
-                            {
-                              duration: 1000,
-                              fill: "forwards",
-                            }
-                          );
-                        },
-                        { once: true }
-                      );
-                    }
-
-                    animateCylinder(zero, -60);
-                    animateCylinder(ten, -70);
-                    animateCylinder(twenty, -80);
-                    animateCylinder(thirty, -90);
+                    // take nhcl + aspirin sample in cylinders
+                    animateCylinder(zero, aspirin, -60);
+                    animateCylinder(ten, aspirin, -70);
+                    animateCylinder(twenty, aspirin, -80);
+                    animateCylinder(thirty, aspirin, -90);
                   };
 
                   aspirin.childNodes[0].animate(
@@ -486,4 +396,85 @@ function shakeAspirin() {
   );
 }
 
-// take sample in cylinders - 0, 10, 20, 30
+// animation for cylinders - 0, 10, 20, 30
+function animateCylinder(cylinder, solution, solutionLevel) {
+  const zero = document.querySelector("#zero");
+  const ten = document.querySelector("#ten");
+  const twenty = document.querySelector("#twenty");
+  const thirty = document.querySelector("#thirty");
+
+  let cylinderCords = cylinder.getBoundingClientRect();
+  let solutionCords = solution.getBoundingClientRect();
+
+  cylinder.addEventListener(
+    "click",
+    function () {
+      solution.animate(
+        [
+          {},
+          {
+            transform: `translate( ${
+              cylinderCords.right - solutionCords.left
+            }px, ${
+              cylinderCords.top - solutionCords.top - solutionCords.height
+            }px)`,
+          },
+          {
+            transform: `translate( ${
+              cylinderCords.right - solutionCords.left
+            }px, ${
+              cylinderCords.top - solutionCords.top - solutionCords.height
+            }px) rotate(-45deg)`,
+          },
+          {
+            transform: `translate( ${
+              cylinderCords.right - solutionCords.left
+            }px, ${
+              cylinderCords.top - solutionCords.top - solutionCords.height
+            }px) rotate(-45deg)`,
+          },
+          {
+            transform: `translate( ${
+              cylinderCords.right - solutionCords.left
+            }px, ${
+              cylinderCords.top - solutionCords.top - solutionCords.height
+            }px)`,
+          },
+          {},
+        ],
+        {
+          duration: 2000,
+          iterations: 1,
+        }
+      );
+
+      solution.childNodes[0].animate(
+        [
+          {},
+          {
+            bottom: `${solutionLevel}px`,
+          },
+        ],
+        {
+          duration: 1000,
+          fill: "forwards",
+        }
+      );
+
+      // fill cylinders
+      cylinder.childNodes[0].animate(
+        [
+          {},
+          {
+            bottom: "-150px",
+          },
+        ],
+        {
+          duration: 1000,
+          fill: "forwards",
+        }
+      );
+    },
+    { once: true }
+  );
+}
