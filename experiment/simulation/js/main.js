@@ -187,7 +187,7 @@ nhcl.addEventListener(
                       { duration: 500, fill: "forwards" }
                     ).onfinish = function () {
                       // replace nhcl with chemical
-                      nhcl.setAttribute("data-after", "CHEMICAL");
+                      nhcl.setAttribute("data-after", "FERRIC NITRATE");
 
                       console.log("Child", nhcl.childNodes);
                       // nhcl.childNodes[1].bottom = "-10px";
