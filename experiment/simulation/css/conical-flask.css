@@ -1,0 +1,23 @@
+#conical-flask {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(189, 195, 199, 0.6);
+  /* border-radius: 10px; */
+  /* border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; */
+  /* overflow: hidden; */
+  /* clip-path: polygon(50% 0, 0 0, 0 100%, 0 50%); */
+  clip-path: path(
+    "M 40 0  L 40 20 L 0 100 A 5,5 0,0,1 150,75 L 100 100 L 60 20 L 60 0 Z"
+  );
+  /* border-top-left-radius: 50px 100px; */
+}
+
+/* #conical-flask::after,
+#conical-flask::before {
+  content: "";
+  width: 20px;
+  aspect-ratio: 1;
+  background-color: aqua;
+  position: absolute;
+} */
